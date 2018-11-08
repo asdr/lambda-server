@@ -9,6 +9,7 @@
   :depends-on (:cl-fad
                :quicklisp
                :clack
+               :ningle
                :woo)
   :components ((:module "src"
                         :components ((:file "util")

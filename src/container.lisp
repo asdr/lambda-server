@@ -8,21 +8,16 @@
 
 (defparameter *applications* nil)
 
-;; (defun get-application-path (name)
-;;   (when name
-;;     (merge-pathnames (concatenate 'string name "/") lambda-server.config:*applications-path*)))
-
 (defun load-application (application-path)
   (progn
     (let* ((name (car (last (pathname-directory application-path))))
            (asd-path (merge-pathnames application-path (concatenate 'string name ".asd"))))
       (handler-case
           (when (cl-fad:file-exists-p asd-path)
-            (progn
-              (asdf:load-asd asd-path)
-              (ql:quickload (make-symbol name))
-              (format t "Application ~a is successfully loaded.~%" name)
-              t))
+            (asdf:load-asd asd-path)
+            (ql:quickload (make-symbol name))
+            (format t "Application ~a is successfully loaded.~%" name)
+            t)
         (error (c)
           (format t "~a~%~%" c)
           nil)))))
@@ -32,4 +27,5 @@
     (dolist (application-directory application-directory-list)
       (let ((application-path (cl-fad:directory-pathname-p application-directory)))
         (when application-path
-          (load-application application-path))))))
+          (load-application application-path))))
+    t))
