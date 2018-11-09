@@ -13,12 +13,6 @@
 
 (defparameter *server-handler* nil)
 
-(defun root-handler ()
-  "<h2>This is the root.</h2>")
-
-(defun 404-handler ()
-  "<h2>404 - Not Found</h2>")
-
 (defvar *server* (make-instance 'ningle:app))
 
 (defun start ()

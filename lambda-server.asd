@@ -6,7 +6,8 @@
   :version "0.1.0"
   :author "Serdar Gokcen"
   :license "BSD-3"
-  :depends-on (:cl-fad
+  :depends-on (:cl-ppcre
+               :cl-fad
                :quicklisp
                :clack
                :ningle
