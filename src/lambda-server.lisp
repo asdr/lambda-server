@@ -7,7 +7,7 @@
 
 (defpackage lambda-server
   (:use :cl)
-  (:export :start :stop))
+  (:export :start :stop :*server*))
 
 (in-package :lambda-server)
 

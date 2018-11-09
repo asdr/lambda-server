@@ -15,6 +15,7 @@
   :components ((:module "src"
                         :components ((:file "util")
                                      (:file "configuration")
+                                     (:file "api")
                                      (:file "lambda-server")
                                      (:file "container"))))
   :description "Application Server for Common Lisp Applications"

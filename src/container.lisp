@@ -16,7 +16,7 @@
           (when (cl-fad:file-exists-p asd-path)
             (asdf:load-asd asd-path)
             (ql:quickload (make-symbol name))
-            (format t "Application ~a is successfully loaded.~%" name)
+            (format t "Application ~a is successfully loaded.~%~%" name)
             t)
         (error (c)
           (format t "~a~%~%" c)
