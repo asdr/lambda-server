@@ -34,9 +34,9 @@
                                (intern-symbol (subseq p 1))
                                `(cdr (assoc ,(intern-symbol (subseq p 1) :keyword t) ,gparams))))
                         parameter-names))
-                 ,(when parameter-names
-                    `(declare (ignorable ,@(mapcar
-                                            #'(lambda (p)
-                                                (intern-symbol (subseq p 1)))
-                                            parameter-names))))
+                 (declare (ignorable ,(intern-symbol "unnamed-parameter-list") ,@(when parameter-names
+                                                                                   (mapcar
+                                                                                    #'(lambda (p)
+                                                                                        (intern-symbol (subseq p 1)))
+                                                                                    parameter-names))))
                  ,@body)))))
