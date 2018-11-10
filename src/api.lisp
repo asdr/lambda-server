@@ -21,10 +21,12 @@
         (parameter-names (get-parameter-names string-url-rule)))
     `(setf (ningle:route lambda-server:*server* (append-web-context-root ,string-url-rule) ,@args)
            #'(lambda (,params)
-               (let ,(mapcar
-                      #'(lambda (p)
-                          `,(list
-                             (intern (string-upcase (subseq p 1) ))
-                             `(cdr (assoc ,(intern (string-upcase (subseq p 1)) :keyword) ,params))))
-                      parameter-names)
+               (let ,(cons
+                      `(,(intern (string-upcase "unnamed-parameter-list")) (cdr (assoc :splat ,params)))
+                      (mapcar
+                       #'(lambda (p)
+                           `,(list
+                              (intern (string-upcase (subseq p 1) ))
+                              `(cdr (assoc ,(intern (string-upcase (subseq p 1)) :keyword) ,params))))
+                       parameter-names))
                  ,@body)))))
