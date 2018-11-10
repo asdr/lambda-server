@@ -14,4 +14,3 @@ Sample application can be found as a separate repository, lambda-server-console.
 * Run (lambda-server:start)
 
 Server will be started on port 5000.
-
